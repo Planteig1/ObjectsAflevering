@@ -72,7 +72,6 @@ function getSentimentScore(sentence) {
         positiveWords: [],
         negativeWords: []
     }
-
     //Make the input to lowercase (caseInsensitive) and split each word
     const inputSentence = sentence.toLowerCase().split(" ");
     // Check to see if the sentence includes pos or neg words and calculate score
@@ -94,4 +93,31 @@ const sentimentScoreObjectTest2 = getSentimentScore('I Am SaD and vEry UNHaPPY')
 
 console.log(sentimentScoreObjectTest1);
 console.log(sentimentScoreObjectTest2);
+
+//Opgave 4 - Optional ( Not done )
+//Write a function that counts the frequency of characters in a string:
+
+function getCharacterFrequencies(word) {
+    //Create empty object
+    const resultForCharacterFrequencies = {
+        characters: []
+    };
+
+    for (let currentChar of word) {
+
+        if(!resultForCharacterFrequencies.characters.includes(currentChar)){
+            resultForCharacterFrequencies.characters.push({
+                character: currentChar,
+                count: 1
+            })
+        } else if (resultForCharacterFrequencies.characters.includes(currentChar)){
+            resultForCharacterFrequencies.characters.count += 1;
+        }
+    }
+    return resultForCharacterFrequencies
+}
+
+console.log(getCharacterFrequencies('happy'));
+
+console.log(getCharacterFrequencies('happy'));
 
