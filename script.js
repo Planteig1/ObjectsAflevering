@@ -33,6 +33,7 @@ console.log(clothesToWear3);
 // If the user hits 6 in every roll the log out Jackpot 🎉
 
 function diceRoll(amountOfRolls) {
+    let jackpotTrueOrFalse = true
     // Create the for loop, so it loops the amount of times specified
     for(let i = 0; i < amountOfRolls; i++) {
         // Create the random roll
@@ -40,12 +41,16 @@ function diceRoll(amountOfRolls) {
 
         if (randomDiceRoll === 6 ) {
             console.log("You just hit 6!")
+        } else  {
+            jackpotTrueOrFalse = false
         }
     }
-
+    if(jackpotTrueOrFalse) {
+        console.log("Jackpot 🎉")
+    }
 }
 // Eksempler med brug af funktionen
-diceRoll(10)
+diceRoll(3)
 
 
 
