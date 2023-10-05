@@ -3,7 +3,6 @@
 // Based on the temperature it should return a string with what the user should wear.
 // You decide what the user should wear based on the temperature.
 function whatShouldIWear(temperature){
-    // List med det tøjet i garderoben
     let whatClothesShouldIWear
     if (temperature >= 21) {
         whatClothesShouldIWear = `If the temperature is ${temperature}. Then you should wear a T-Shirt & shorts`
@@ -33,24 +32,33 @@ console.log(clothesToWear3);
 // If the user hits 6 in every roll the log out Jackpot 🎉
 
 function diceRoll(amountOfRolls) {
-    let jackpotTrueOrFalse = true
+    // Make array to store values
+    const diceRollValues = [];
+    // Make a six counter
+    let amountOfSixHit = 0;
     // Create the for loop, so it loops the amount of times specified
     for(let i = 0; i < amountOfRolls; i++) {
         // Create the random roll
-        let randomDiceRoll = Math.floor(Math.random() * 6 )+ 1;
-        // Check if the dice landed on 6
-        if (randomDiceRoll === 6 ) {
-            console.log("You just hit 6!")
-        } else  {
-            jackpotTrueOrFalse = false
+        let randomDiceRoll = Math.floor(Math.random() * 6) + 1;
+        //Push it into the diceRollArray
+        diceRollValues.push(randomDiceRoll);
+        //If 6 was hit - add it to the counter.
+        if ( randomDiceRoll === 6) {
+            amountOfSixHit += 1;
         }
     }
-    if(jackpotTrueOrFalse) {
-        console.log("Jackpot 🎉")
+    console.log(diceRollValues);
+    // Check to see if all rolls hit 6
+    const isAllRollsSix = (currentValue) => currentValue === 6;
+    if ( diceRollValues.every(isAllRollsSix)) {
+        console.log("Jackpot 🎉");
+    } // Log out You just hit 6 if it didn't hit jackpot, but it hit 6 minimum 1 time
+    else if ( amountOfSixHit > 0) {
+        console.log("You just hit 6!");
     }
 }
 // Examples of function
-diceRoll(3)
+diceRoll(2)
 
 // Opgave 3
 
@@ -63,7 +71,7 @@ diceRoll(3)
 // Here is an example of using the function:
 
 function getSentimentScore(sentence) {
-    // What words is positive and negative
+    // Make arrays with a list of positive and negative words
     const listOfPositiveWords = ["happy","great","awesome","super","fantastic","love"];
     const listOfNegativeWords = ["sad","awful","unhappy","hate","annoying","bad"];
     // Make the return object
@@ -76,10 +84,12 @@ function getSentimentScore(sentence) {
     const inputSentence = sentence.toLowerCase().split(" ");
     // Check to see if the sentence includes pos or neg words and calculate score
     for (let word of inputSentence) {
+        // Check if the sentence includes positive words
         if (listOfPositiveWords.includes(word)) {
             resultOfAnalysis.score += 1;
             resultOfAnalysis.positiveWords.push(word);
-        } else if (listOfNegativeWords.includes(word)) {
+        } // Check if the sentence includes negative words
+        else if (listOfNegativeWords.includes(word)) {
             resultOfAnalysis.score -= 1;
             resultOfAnalysis.negativeWords.push(word);
         }
@@ -96,6 +106,7 @@ console.log(sentimentScoreObjectTest2);
 
 //Opgave 4 - Optional ( Not done )
 //Write a function that counts the frequency of characters in a string:
+// Brug map?
 
 function getCharacterFrequencies(word) {
     //Create empty object
@@ -121,3 +132,24 @@ console.log(getCharacterFrequencies('happy'));
 
 console.log(getCharacterFrequencies('happy'));
 
+// Opgave 5
+// This is a very real world example of a problem i got at my previous work.
+// I was tasked to implement one of the smart credit card input fields, where the credit card numbers are seperated with a space.
+// Fx inputting 123456789 would show 1234 5678 9.
+
+// Create a function that takes a number as parameter.
+// The function should return the following object:
+
+function formatCreditCardNumber(creditCardNumber) {
+    //Regex tester to see if it is a "real" number
+}
+
+
+const formattedCreditCardObject = formatCreditCardNumber(123456789);
+console.log(formattedCreditCardObject);
+/*
+{
+  original: 123456789,
+  formatted: "1234 5678 9",
+}
+*/
