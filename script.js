@@ -54,11 +54,14 @@ function diceRoll(amountOfRolls) {
         console.log("Jackpot 🎉");
     } // Log out You just hit 6 if it didn't hit jackpot, but it hit 6 minimum 1 time
     else if ( amountOfSixHit > 0) {
-        console.log("You just hit 6!");
+        // Log you just hit 6 the amount of times hit
+        for (let i = 0; i < amountOfSixHit; i++) {
+            console.log("You just hit 6!")
+        }
     }
 }
 // Examples of function
-diceRoll(2)
+diceRoll(4)
 
 // Opgave 3
 
@@ -113,6 +116,9 @@ function getCharacterFrequencies(word) {
     const resultForCharacterFrequencies = {
         characters: []
     };
+    // Split the word
+    let formattedWord = word.split("");
+    console.log(formattedWord);
 
     for (let currentChar of word) {
 
