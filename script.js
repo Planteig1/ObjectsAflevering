@@ -3,7 +3,9 @@
 // Based on the temperature it should return a string with what the user should wear.
 // You decide what the user should wear based on the temperature.
 function whatShouldIWear(temperature){
-    let whatClothesShouldIWear
+    // Create the return string
+    let whatClothesShouldIWear = "";
+    // Check the inputted temperature and give specific instruction based on that
     if (temperature >= 21) {
         whatClothesShouldIWear = `If the temperature is ${temperature}. Then you should wear a T-Shirt & shorts`
     } else if (temperature < 21 && temperature >= 11) {
@@ -16,10 +18,8 @@ function whatShouldIWear(temperature){
 // Eksempler på brug af funktionen.
 const clothesToWear2 = whatShouldIWear(22);
 console.log(clothesToWear2);
-
 const clothesToWear = whatShouldIWear(18);
 console.log(clothesToWear);
-
 const clothesToWear3 = whatShouldIWear(10);
 console.log(clothesToWear3);
 
@@ -47,7 +47,8 @@ function diceRoll(amountOfRolls) {
             amountOfSixHit += 1;
         }
     }
-    console.log(diceRollValues);
+
+    // If you want to see what you rolled | console.log(diceRollValues);
     // Check to see if all rolls hit 6
     const isAllRollsSix = (currentValue) => currentValue === 6;
     if ( diceRollValues.every(isAllRollsSix)) {
@@ -84,9 +85,11 @@ function getSentimentScore(sentence) {
         negativeWords: []
     }
     //Make the input to lowercase (caseInsensitive) and split each word
-    const inputSentence = sentence.toLowerCase().split(" ");
+    const inputSentence = sentence.toLowerCase();
+    // Split Each word
+    const inputSentenceFormatted = inputSentence.split(" ");
     // Check to see if the sentence includes pos or neg words and calculate score
-    for (let word of inputSentence) {
+    for (let word of inputSentenceFormatted) {
         // Check if the sentence includes positive words
         if (listOfPositiveWords.includes(word)) {
             resultOfAnalysis.score += 1;
@@ -103,40 +106,40 @@ function getSentimentScore(sentence) {
 // Examples of function
 const sentimentScoreObjectTest1 = getSentimentScore('I am mega super awesome happy');
 const sentimentScoreObjectTest2 = getSentimentScore('I Am SaD and vEry UNHaPPY');
-
 console.log(sentimentScoreObjectTest1);
 console.log(sentimentScoreObjectTest2);
 
 //Opgave 4 - Optional ( Not done )
 //Write a function that counts the frequency of characters in a string:
-// Brug map?
 
 function getCharacterFrequencies(word) {
-    //Create empty object
+    // Make it caseInsensitive
+    const wordLowerCase = word.toLowerCase();
+    //Create empty return object, with the key: characters
     const resultForCharacterFrequencies = {
         characters: []
     };
-    // Split the word
-    let formattedWord = word.split("");
-    console.log(formattedWord);
+    // Create object to keep track of the count of characters
+    const countOfCharacters = {};
 
-    for (let currentChar of word) {
+    // Create a for...of loop, which iterates over each character in the word.
+    for (let currentCharacter of wordLowerCase) {
+        // Checks to see if it already has the character in the array | If it does, + 1, if not initialize to 1
+        countOfCharacters[currentCharacter] = countOfCharacters[currentCharacter] +1 || 1
+    }
 
-        if(!resultForCharacterFrequencies.characters.includes(currentChar)){
-            resultForCharacterFrequencies.characters.push({
-                character: currentChar,
-                count: 1
-            })
-        } else if (resultForCharacterFrequencies.characters.includes(currentChar)){
-            resultForCharacterFrequencies.characters.count += 1;
-        }
+    // Loop through the countOfCharacters to convert it into the desired format
+    for (let currentCharacter in countOfCharacters) {
+        resultForCharacterFrequencies.characters.push({
+            character: currentCharacter,
+            count: countOfCharacters[currentCharacter]
+        });
     }
     return resultForCharacterFrequencies
 }
-
-// console.log(getCharacterFrequencies('happy'));
-
-// console.log(getCharacterFrequencies('happy'));
+// Examples of the function
+console.log(getCharacterFrequencies('happy'));
+console.log(getCharacterFrequencies('I Am ReAlLy HaPpY'));
 
 // Opgave 5 - Optional
 // This is a very real world example of a problem i got at my previous work.
