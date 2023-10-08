@@ -134,11 +134,11 @@ function getCharacterFrequencies(word) {
     return resultForCharacterFrequencies
 }
 
-console.log(getCharacterFrequencies('happy'));
+// console.log(getCharacterFrequencies('happy'));
 
-console.log(getCharacterFrequencies('happy'));
+// console.log(getCharacterFrequencies('happy'));
 
-// Opgave 5
+// Opgave 5 - Optional
 // This is a very real world example of a problem i got at my previous work.
 // I was tasked to implement one of the smart credit card input fields, where the credit card numbers are seperated with a space.
 // Fx inputting 123456789 would show 1234 5678 9.
@@ -147,15 +147,40 @@ console.log(getCharacterFrequencies('happy'));
 // The function should return the following object:
 
 function formatCreditCardNumber(creditCardNumber) {
-    //Regex tester to see if it is a "real" number
+    // Check to see if the input is number
+    const regExNumberTester = /^[0-9]+$/;
+
+    // If the input isnt all numbers then return that it's invalid. Else do the formatting
+    if (!regExNumberTester.test(creditCardNumber)) {
+        return "Invalid credit card number";
+    } else {
+        // Make the number a string
+        const creditCardNumberAsString = creditCardNumber.toString();
+        // Make an array with all the numbers
+        const numbersInCreditCard = creditCardNumberAsString.split('');
+
+        // Insert a space every 4 characters
+        for (let i = 4; i < numbersInCreditCard.length; i += 5) {
+            numbersInCreditCard.splice(i, 0, ' ');
+        }
+        // Join the array together
+        const creditCardNumberFormatted = numbersInCreditCard.join('');
+
+        // Create the return object
+        const creditCardNumberFormattedAndOriginal = {
+            original: creditCardNumber,
+            formatted: creditCardNumberFormatted
+        };
+
+        return creditCardNumberFormattedAndOriginal;
+    }
 }
 
+// Example of the function
 
-const formattedCreditCardObject = formatCreditCardNumber(123456789);
-console.log(formattedCreditCardObject);
-/*
-{
-  original: 123456789,
-  formatted: "1234 5678 9",
-}
-*/
+const creditCardNumberTest1 = formatCreditCardNumber(123456789);
+const creditCardNumberTest2 = formatCreditCardNumber(1010202030304040);
+const creditCardNumberTest3 = formatCreditCardNumber("hej1232hej23214d");
+console.log(creditCardNumberTest1);
+console.log(creditCardNumberTest2);
+console.log(creditCardNumberTest3);
