@@ -109,7 +109,7 @@ const sentimentScoreObjectTest2 = getSentimentScore('I Am SaD and vEry UNHaPPY')
 console.log(sentimentScoreObjectTest1);
 console.log(sentimentScoreObjectTest2);
 
-//Opgave 4 - Optional ( Not done )
+//Opgave 4 - Optional
 //Write a function that counts the frequency of characters in a string:
 
 function getCharacterFrequencies(word) {
@@ -147,8 +147,6 @@ console.log(getCharacterFrequencies('I Am ReAlLy HaPpY'));
 // Fx inputting 123456789 would show 1234 5678 9.
 
 // Create a function that takes a number as parameter.
-// The function should return the following object:
-
 function formatCreditCardNumber(creditCardNumber) {
     // Check to see if the input is number
     const regExNumberTester = /^[0-9]+$/;
