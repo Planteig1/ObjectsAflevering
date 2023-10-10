@@ -124,7 +124,7 @@ function getCharacterFrequencies(word) {
 
     // Create a for...of loop, which iterates over each character in the word.
     for (let currentCharacter of wordLowerCase) {
-        // Checks to see if it already has the character in the array | If it does, + 1, if not initialize to 1
+        // Checks to see if it already has the character in the object | If it does, + 1, if not initialize to 1
         countOfCharacters[currentCharacter] = countOfCharacters[currentCharacter] +1 || 1
     }
 
